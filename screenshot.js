@@ -74,19 +74,6 @@ async function takeScreenshot() {
 
     console.log(`Screenshot saved: ${filepath}`);
 
-    // メタデータも保存（オプション）
-    const metadata = {
-      url: TARGET_URL,
-      timestamp: now.toISOString(),
-      timestampJST: jstDate.toISOString(),
-      filename: filename,
-      title: await page.title(),
-    };
-
-    const metadataPath = path.join(SCREENSHOT_DIR, `${dateStr}_${timeStr}.json`);
-    fs.writeFileSync(metadataPath, JSON.stringify(metadata, null, 2));
-    console.log(`Metadata saved: ${metadataPath}`);
-
   } catch (error) {
     console.error('Error taking screenshot:', error);
     process.exit(1);
