@@ -34,15 +34,28 @@ jobs:
         run: node rakumachi-screenshot.js
         
       - name: Commit and push
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add screenshots/
-          
+
           # 変更がある場合のみコミット
           if git diff --staged --quiet; then
             echo "No changes to commit"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
           else
             git commit -m "📸 Screenshot $(TZ=Asia/Tokyo date +%Y-%m-%d)"
             git push
+            echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
+
+      - name: Send to LINE
+        if: steps.commit.outputs.has_changes == 'true'
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: |
+          # GitHubに画像が反映されるまで少し待機
+          sleep 10
+          node send-to-line.js
