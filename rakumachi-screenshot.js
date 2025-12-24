@@ -2,7 +2,7 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 
-const TARGET_URL = 'https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&dim%5B%5D=1002&gross_from=8&newly=1&price_to=3000&year_to=25';
+const TARGET_URL = 'https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?realtor_id=&area=&line=&st=&limit=20&keyword=&newly=1&price_from=&price_to=3000&gross_from=8&gross_to=&dim%5B%5D=1001&dim%5B%5D=1002&year_from=&year_to=25&structure%5B%5D=4&b_area_from=&b_area_to=&houses_ge=&houses_le=&min=&l_area_from=&l_area_to=';
 const SCREENSHOT_DIR = 'screenshots/rakumachi';
 
 async function takeScreenshot() {
