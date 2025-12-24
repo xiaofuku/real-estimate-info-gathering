@@ -2,8 +2,8 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 
-const TARGET_URL = 'https://www.kenbiya.com/pp2_3/cd2=1/koz=1/p2=3000/r1=8/rc2=20/';
-const SCREENSHOT_DIR = 'screenshots/kenbiya';
+const TARGET_URL = 'https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?dim%5B%5D=1001&dim%5B%5D=1002&gross_from=8&newly=1&price_to=3000&year_to=25';
+const SCREENSHOT_DIR = 'screenshots/rakumachi';
 
 async function takeScreenshot() {
   // スクリーンショット保存ディレクトリを作成
@@ -36,7 +36,7 @@ async function takeScreenshot() {
 
     // Refererを設定してより自然なアクセスに見せる
     await page.setExtraHTTPHeaders({
-      'Referer': 'https://www.kenbiya.com/',
+      'Referer': 'https://www.rakumachi.jp/',
     });
 
     await page.goto(TARGET_URL, {
@@ -62,7 +62,7 @@ async function takeScreenshot() {
     const jstDate = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
     const dateStr = jstDate.toISOString().split('T')[0];
     const timeStr = jstDate.toTimeString().split(' ')[0].replace(/:/g, '-');
-    
+
     const filename = `${dateStr}_${timeStr}.png`;
     const filepath = path.join(SCREENSHOT_DIR, filename);
 
