@@ -28,7 +28,7 @@ jobs:
           npx playwright install chromium --with-deps
 
       - name: Take Kenbiya screenshot
-        run: node screenshot.js
+        run: node kenbiya-screenshot.js
 
       - name: Take Rakumachi screenshot
         run: node rakumachi-screenshot.js
