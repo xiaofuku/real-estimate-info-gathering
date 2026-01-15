@@ -32,12 +32,16 @@ https://www.rakumachi.jp/syuuekibukken/area/prefecture/dimAll/?realtor_id=&area=
 ├── .github/
 │   └── workflows/
 │       └── screenshot.yml        # GitHub Actions ワークフロー
+├── docs/
+│   ├── hanzawa_investment_policy.md   # 半沢マコト投資方針
+│   └── saitama_investment_policy.md   # 埼玉大家の会投資方針
+├── scripts/
+│   ├── kenbiya-screenshot.js     # 健美家スクリーンショット取得スクリプト
+│   ├── rakumachi-screenshot.js   # 楽待スクリーンショット取得スクリプト
+│   └── send-to-line.js           # LINE 送信スクリプト
 ├── screenshots/
 │   ├── kenbiya/                  # 健美家のスクリーンショット保存先
 │   └── rakumachi/                # 楽待のスクリーンショット保存先
-├── kenbiya-screenshot.js         # 健美家スクリーンショット取得スクリプト
-├── rakumachi-screenshot.js       # 楽待スクリーンショット取得スクリプト
-├── send-to-line.js               # LINE送信スクリプト
 ├── package.json                  # Node.js 依存関係
 └── README.md                     # このファイル
 ```
@@ -131,13 +135,13 @@ npm install
 npx playwright install chromium
 
 # 健美家のスクリーンショット取得
-node kenbiya-screenshot.js
+node scripts/kenbiya-screenshot.js
 
 # 楽待のスクリーンショット取得
-node rakumachi-screenshot.js
+node scripts/rakumachi-screenshot.js
 
 # LINE 送信テスト（環境変数が必要）
-LINE_CHANNEL_ACCESS_TOKEN="your_token" LINE_USER_ID="your_user_id" node send-to-line.js
+LINE_CHANNEL_ACCESS_TOKEN="your_token" LINE_USER_ID="your_user_id" node scripts/send-to-line.js
 ```
 
 ## 出力
