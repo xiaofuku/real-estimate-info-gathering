@@ -2,10 +2,11 @@
   "name": "kenbiya-screenshot",
   "version": "1.0.0",
   "description": "Daily screenshot of Kenbiya property listings",
-  "main": "screenshot.js",
+  "main": "scripts/kenbiya-screenshot.js",
   "scripts": {
-    "screenshot": "node screenshot.js",
-    "test": "node screenshot.js"
+    "screenshot:kenbiya": "node scripts/kenbiya-screenshot.js",
+    "screenshot:rakumachi": "node scripts/rakumachi-screenshot.js",
+    "send-to-line": "node scripts/send-to-line.js"
   },
   "dependencies": {
     "playwright": "^1.49.0",

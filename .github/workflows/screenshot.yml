@@ -28,10 +28,10 @@ jobs:
           npx playwright install chromium --with-deps
 
       - name: Take Kenbiya screenshot
-        run: node kenbiya-screenshot.js
+        run: node scripts/kenbiya-screenshot.js
 
       - name: Take Rakumachi screenshot
-        run: node rakumachi-screenshot.js
+        run: node scripts/rakumachi-screenshot.js
         
       - name: Commit and push
         id: commit
@@ -58,4 +58,4 @@ jobs:
         run: |
           # GitHubに画像が反映されるまで少し待機
           sleep 10
-          node send-to-line.js
+          node scripts/send-to-line.js
